@@ -6,6 +6,10 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
 
+// Decalaração das funções para calcular a densidade populacional e PIB per capita
+float calcularDensidadePopulacional(int populacao, float area);
+float calcularPIBPerCapita(float pib, int populacao);
+
 int main() {
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
@@ -16,6 +20,8 @@ int main() {
     float area;
     float pib;
     int pontos_turisticos;
+    float densidade_populacional;
+    float pib_per_capita;
     
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
@@ -47,6 +53,10 @@ int main() {
 
     printf("Digite o número de pontos turísticos da cidade: ");
     scanf("%d", &pontos_turisticos);
+
+    //Adição da densidade populacional e PIB per capita
+    densidade_populacional = calcularDensidadePopulacional(populacao, area);
+    pib_per_capita = calcularPIBPerCapita(pib, populacao);
     
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
@@ -59,8 +69,20 @@ int main() {
     printf("Nome da Cidade: %s\n", nome_cidade);
     printf("População: %d\n", populacao);
     printf("Área: %.2f km²\n", area);
-    printf("PIB: R$%.2f\n", pib);
+    printf("Densidade Populacional: %.2f pessoas/km²\n", densidade_populacional);
+    printf("PIB: %.2f bilhões de reais\n", pib);
+    printf("PIB per Capita: %.2f reais\n", pib_per_capita);
     printf("Pontos Turísticos: %d\n", pontos_turisticos);
 
     return 0;
+}
+
+//Funções para calcular a densidade populacional e PIB per capita
+
+float calcularDensidadePopulacional(int populacao, float area) {
+    return populacao / area;
+}
+
+float calcularPIBPerCapita(float pib, int populacao) {
+    return pib / populacao;
 }
