@@ -9,6 +9,7 @@
 // Decalaração das funções para calcular a densidade populacional e PIB per capita
 float calcularDensidadePopulacional(int populacao, float area);
 float calcularPIBPerCapita(float pib, int populacao);
+float calcularSuperPoder(int populacao, float area, float pib, int pontos_turisticos, float densidade_populacional, float pib_per_capita);
 
 // Definindo a estrutura "Carta"
 typedef struct {
