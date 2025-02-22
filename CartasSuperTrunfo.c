@@ -7,10 +7,6 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 // Decalaração das funções para calcular a densidade populacional e PIB per capita
-float calcularDensidadePopulacional(int populacao, float area);
-float calcularPIBPerCapita(float pib, int populacao);
-float calcularSuperPoder(int populacao, float area, float pib, int pontos_turisticos, float densidade_populacional, float pib_per_capita);
-
 // Definindo a estrutura "Carta"
 typedef struct {
     char estado;
@@ -24,6 +20,57 @@ typedef struct {
     float pib_per_capita;
     float super_poder;
 } Carta;
+float calcularDensidadePopulacional(int populacao, float area);
+float calcularPIBPerCapita(float pib, int populacao);
+float calcularSuperPoder(int populacao, float area, float pib, int pontos_turisticos, float densidade_populacional, float pib_per_capita);
+void inicializarCarta(Carta *carta);
+void exibirCarta(const Carta *carta);
+void compararCartas(const Carta *carta1, const Carta *carta2);
+void compararCartasPorAtributo(const Carta *carta1, const Carta *carta2, int atributo);
+
+int main() {
+    
+    // Criação das instancias das cartas
+    Carta carta1, carta2;
+
+    // Atribuição dos valores das cartas
+    printf("Cadastro da carta 1\n");
+    inicializarCarta(&carta1);
+
+    // Exibição da carta 1
+    exibirCarta(&carta1);
+
+    printf("Cadastro da carta 2\n");
+    inicializarCarta(&carta2);
+
+    // Exibição da carta 2
+    exibirCarta(&carta2);
+
+    // Comparação das cartas
+    //compararCartas(&carta1, &carta2);
+
+    // Comparação das cartas por atributo
+    int atributo = 1;
+    compararCartasPorAtributo(&carta1, &carta2, atributo);
+
+
+    return 0;
+}
+
+//Funções para calcular a densidade populacional e PIB per capita
+
+float calcularDensidadePopulacional(int populacao, float area) {
+    return populacao / area;
+}
+
+float calcularPIBPerCapita(float pib, int populacao) {
+    return pib / populacao;
+}
+
+//Função para calcular o super poder da cidade (Soma de todos os atributos)
+float calcularSuperPoder(int populacao, float area, float pib, int pontos_turisticos, float densidade_populacional, float pib_per_capita) {
+    return populacao + area + pib + pontos_turisticos + densidade_populacional + pib_per_capita;
+}
 
 // Função para inicializar uma carta
 void inicializarCarta(Carta *carta) {
@@ -110,41 +157,76 @@ void compararCartas(const Carta *carta1, const Carta *carta2) {
     printf("Super Poder: %d\n", carta1->super_poder > carta2->super_poder);
 }
 
-int main() {
+void compararCartasPorAtributo(const Carta *carta1, const Carta *carta2, int atributo) {
+    if (atributo == 1) {
+        printf("Comparação das Cartas por População:\n");
+        if(carta1->populacao > carta2->populacao) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->populacao < carta2->populacao) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 2) {
+        printf("Comparação das Cartas por Área:\n");
+        if(carta1->area > carta2->area) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->area < carta2->area) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 3) {
+        printf("Comparação das Cartas por PIB:\n");
+        if(carta1->pib > carta2->pib) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->pib < carta2->pib) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 4) {
+        printf("Comparação das Cartas por Pontos Turísticos:\n");
+        if(carta1->pontos_turisticos > carta2->pontos_turisticos) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->pontos_turisticos < carta2->pontos_turisticos) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 5) {
+        printf("Comparação das Cartas por Densidade Populacional:\n");
+        if(carta1->densidade_populacional < carta2->densidade_populacional) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->densidade_populacional < carta2->densidade_populacional) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 6) {
+        printf("Comparação das Cartas por PIB per Capita:\n");
+        if(carta1->pib_per_capita > carta2->pib_per_capita) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->pib_per_capita < carta2->pib_per_capita) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
+    if (atributo == 7) {
+        printf("Comparação das Cartas por Super Poder:\n");
+        if(carta1->super_poder > carta2->super_poder) {
+            printf("A carta 1 venceu!\n");
+        } else if (carta1->super_poder < carta2->super_poder) {
+            printf("A carta 2 venceu!\n");
+        } else {
+            printf("Empate!\n");
+        }
+    }
     
-    // Criação das instancias das cartas
-    Carta carta1, carta2;
-
-    // Atribuição dos valores das cartas
-    printf("Cadastro da carta 1\n");
-    inicializarCarta(&carta1);
-
-    // Exibição da carta 1
-    exibirCarta(&carta1);
-
-    printf("Cadastro da carta 2\n");
-    inicializarCarta(&carta2);
-
-    // Exibição da carta 2
-    exibirCarta(&carta2);
-
-    // Comparação das cartas
-    compararCartas(&carta1, &carta2);
-
-    return 0;
-}
-
-//Funções para calcular a densidade populacional e PIB per capita
-
-float calcularDensidadePopulacional(int populacao, float area) {
-    return populacao / area;
-}
-
-float calcularPIBPerCapita(float pib, int populacao) {
-    return pib / populacao;
-}
-
-//Função para calcular o super poder da cidade (Soma de todos os atributos)
-float calcularSuperPoder(int populacao, float area, float pib, int pontos_turisticos, float densidade_populacional, float pib_per_capita) {
-    return populacao + area + pib + pontos_turisticos + densidade_populacional + pib_per_capita;
 }
