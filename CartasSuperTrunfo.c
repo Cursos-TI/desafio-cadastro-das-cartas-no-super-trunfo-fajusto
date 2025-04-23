@@ -50,7 +50,10 @@ int main() {
     //compararCartas(&carta1, &carta2);
 
     // Comparação das cartas por atributo
-    int atributo = 1;
+    int atributo;
+
+    printf("Escolha o atributo para comparar (1: População, 2: Área, 3: PIB, 4: Pontos Turísticos, 5: Densidade Populacional, 6: PIB per Capita, 7: Super Poder): ");
+    scanf("%d", &atributo);
     compararCartasPorAtributo(&carta1, &carta2, atributo);
 
 
